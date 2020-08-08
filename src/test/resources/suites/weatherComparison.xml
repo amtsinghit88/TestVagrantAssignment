@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="weather comparison" verbose="10">
+
+	<listeners>
+
+	</listeners>
+
+
+	<test name="weather comparison ui">
+        <parameter name="browser" value="chrome"></parameter>
+		<classes>
+			<class name="com.testVagrant.ui.WeatherComparison">
+				<methods>
+					<include name="weatherComparison"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+</suite> 
+
