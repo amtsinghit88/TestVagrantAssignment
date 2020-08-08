@@ -9,7 +9,7 @@
 	<test name="weather comparison ui">
         <parameter name="browser" value="chrome"></parameter>
 		<classes>
-			<class name="com.testVagrant.ui.WeatherComparison">
+			<class name="com.testVagrant.WeatherComparison">
 				<methods>
 					<include name="weatherComparison"></include>
 				</methods>

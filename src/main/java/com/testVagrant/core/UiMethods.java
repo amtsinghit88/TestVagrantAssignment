@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static com.testVagrant.utils.SeleniumUtility.*;
 
@@ -24,6 +25,7 @@ public class UiMethods {
         seleniumClick(ndtvWeather.weatherLink);
         if (isElementPresent(ndtvWeather.pinCitySearchInpBox)) {
             seleniumType(ndtvWeather.pinCitySearchInpBox, cityName);
+            if(isElementPresent(driver, NdtvWeather.cityCheckBox, cityName))
             seleniumClick(driver, NdtvWeather.cityCheckBox, cityName);
         } else {
             screenshot(driver);
@@ -34,7 +36,7 @@ public class UiMethods {
             seleniumClick(driver, NdtvWeather.mapCityClick, cityName);
             data = seleniumGetText(driver, NdtvWeather.cityWeatherDetails, cityName);
             ReporterUtil.log("weather details from ndtv");
-            ReporterUtil.log(data);
+            //ReporterUtil.log(data);
         } else {
             screenshot(driver);
             Assert.fail(cityName + " is not available at map");
@@ -44,6 +46,10 @@ public class UiMethods {
         for (int i = 1; i < split.length; i++) {
             String[] split1 = split[i].split(":");
             map.put(split1[0], split1[1]);
+        }
+
+        for(Map.Entry<String,String> entry : map.entrySet()){
+            ReporterUtil.log(entry.getKey()+" :: "+entry.getValue());
         }
     return map;
     }
