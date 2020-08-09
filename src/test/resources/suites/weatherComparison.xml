@@ -5,13 +5,22 @@
 
 	</listeners>
 
-
-	<test name="weather comparison ui">
+	<test name="weather comparison between ndtv and openweathermap">
         <parameter name="browser" value="chrome"></parameter>
 		<classes>
 			<class name="com.testVagrant.WeatherComparison">
 				<methods>
 					<include name="weatherComparison"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="verification of weather status from external source">
+		<classes>
+			<class name="com.testVagrant.WeatherVarianceLogic">
+				<methods>
+					<include name="weatherTemperatureValidation"></include>
 				</methods>
 			</class>
 		</classes>
