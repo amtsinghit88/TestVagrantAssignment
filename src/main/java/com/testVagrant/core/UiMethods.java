@@ -14,7 +14,7 @@ import static com.testVagrant.utils.SeleniumUtility.*;
 
 public class UiMethods {
 
-    public HashMap<String, String> uiWeatherDetails(RemoteWebDriver driver, String cityName) {
+    public HashMap<String, String> uiWeatherDetails(RemoteWebDriver driver, String cityName) throws InterruptedException {
         String data = null;
         HashMap<String, String> map = new HashMap<>();
         NdtvWeather ndtvWeather = PageFactory.initElements(driver, NdtvWeather.class);
@@ -24,8 +24,10 @@ public class UiMethods {
         waitForElementVisibility(driver, ndtvWeather.weatherLink, 10);
         seleniumClick(ndtvWeather.weatherLink);
         if (isElementPresent(ndtvWeather.pinCitySearchInpBox)) {
+            Thread.sleep(500);
             seleniumType(ndtvWeather.pinCitySearchInpBox, cityName);
             if(isElementPresent(driver, NdtvWeather.cityCheckBox, cityName))
+                Thread.sleep(500);
             seleniumClick(driver, NdtvWeather.cityCheckBox, cityName);
         } else {
             screenshot(driver);
@@ -35,6 +37,7 @@ public class UiMethods {
         if (isElementPresent(driver, NdtvWeather.mapCityClick, cityName)) {
             seleniumClick(driver, NdtvWeather.mapCityClick, cityName);
             data = seleniumGetText(driver, NdtvWeather.cityWeatherDetails, cityName);
+            screenshot(driver);
             ReporterUtil.log("weather details from ndtv");
             //ReporterUtil.log(data);
         } else {

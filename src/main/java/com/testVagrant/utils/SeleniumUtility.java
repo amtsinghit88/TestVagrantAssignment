@@ -327,8 +327,23 @@ public class SeleniumUtility {
 
 	@Attachment(type = "image/png")
 	public static byte[] screenshot(RemoteWebDriver driver) {
+		/*String USERDIR = System.getProperty("user.dir"),
+				SCREENSHOTPATH = USERDIR + File.separator + "build"+File.separator+"reports"+File.separator+"tests"+File.separator+"runTests"+File.separator+"html"+File.separator;*/
 		try {
+			/*LocalTime time = LocalTime.now();
+			File path = new File(SCREENSHOTPATH);
+			System.setProperty("org.uncommons.reportng.escape-output", "false");
+			File file = new File(SCREENSHOTPATH + File.separator + currentDate.toString());
+			if (!file.exists()) {
+				file.mkdirs();
+
+			}*/
 			File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			/*File filePath = new File(file.toString() + File.separator + "snap" + "-TimeStamp-" + time.getHour() + "-"
+					+ time.getMinute() +"-"+time.getSecond()+ ".jpg");
+			FileUtils.copyFile(screen, filePath);
+
+			Reporter.log("<a href='" + filePath.toString() + "' target=blank><img src='" + filePath.toString() + "' height=" + 200 + " width=" + 400 + " /></a>", true);*/
 			return Files.toByteArray(screen);
 		} catch (IOException e) {
 			return null;

@@ -25,7 +25,7 @@ public class CommonMethods {
         ReporterUtil.log("NDTV temp converted from degrees to kelvin :: "+convetDegreeInKelvin);
         ReporterUtil.log("NDTV temp converted from fahrenheit to kelvin :: "+convetFahrenheitInKelvin);
 
-        Assert.assertTrue(apiTemp==convetDegreeInKelvin,"openweathermap api temp isnot matching with ndtv weather temp in kelvin temp unit");
+        Assert.assertTrue(Math.round(apiTemp)==Math.round(convetDegreeInKelvin),"openweathermap api temp isnot matching with ndtv weather temp in kelvin temp unit");
 
     }
 

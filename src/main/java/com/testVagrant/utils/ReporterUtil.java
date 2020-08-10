@@ -1,9 +1,11 @@
 package com.testVagrant.utils;
 
+import io.qameta.allure.Step;
 import org.testng.Reporter;
 
 public class ReporterUtil {
 
+	@Step("{0}")
 	public static void log(String str) {
 		Reporter.log(str, true);
 	}
